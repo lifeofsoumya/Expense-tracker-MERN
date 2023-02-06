@@ -1,21 +1,29 @@
 *{
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
+
 
 body{
   background-color: #17181F;
   color:white;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+
 main{
-  max-width: 360px;
-  margin: 30px auto;
+  max-width: 400px;
+  margin: 13px auto;
+  padding: 0px 10px;
+
 }
 
 h1{
   text-align: center;
   color:#fff;
   margin:0;
+  font-size: 2.6rem;
 }
 form{
   margin-top: 20px;
@@ -31,7 +39,9 @@ form input{
 form input[type="datetime-local"]{
   color: #777;
 }
-
+input{
+  font-size: 1rem;
+}
 form div.basic{
   display:flex;
   gap: 5px;
@@ -57,7 +67,6 @@ form button{
 
 div.transactions{
   margin-top: 10px;
-
 }
 div.transaction{
   display:flex;
@@ -70,11 +79,11 @@ div.transaction:first-child{
 }
 
 div.transaction div.name{
-  font-size: 1.3rem;
+  font-size: 0.9rem;
 
 }
 div.transaction div.description{
-  font-size: 1rem;
+  font-size: 0.8rem;
   color:#888;
 }
 
@@ -101,4 +110,34 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+.time{
+  font-size:.7rem;
+}
+.fixed{
+  z-index: 999;
+  position: sticky;
+  top: 0;
+  margin-top:-15px;
+  background-color: #17181F;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #161617;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
