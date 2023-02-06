@@ -37,6 +37,11 @@ form div.basic{
   gap: 5px;
   margin-bottom: 5px;
 }
+form div.description{
+  display:flex;
+  gap: 5px;
+  margin-bottom: 5px;
+}
 
 form button{
   width: 100%;
@@ -85,4 +90,15 @@ div.price.red{
 div.transaction div.datetime{
   font-size: 1rem;
   color: #888;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
