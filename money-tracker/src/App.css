@@ -40,6 +40,7 @@ form input{
   border: 2px solid #30313d;
   padding: 3px 5px;
   border-radius: 4px;
+  outline: none;
 }
 form input[type="datetime-local"]{
   color: #777;
@@ -135,11 +136,12 @@ input[type=number] {
 .fix-btn{
   position: absolute;
   top:10px;
-  right:10px;
+  right:5px;
   border-radius:4px;
   border: 2px solid greenyellow;
   color:white;
   background-color: transparent;
+  outline: none;
 }
 .fix-btn:focus{
   cursor: pointer;
@@ -158,6 +160,9 @@ input[type=number] {
   background-color: #3e2828;
   color:transparent;
   border:none;
+}
+.dlt-entry:hover{
+  color:red;
 }
 @media screen and (max-width: 350px) {
   .dlt-entry{

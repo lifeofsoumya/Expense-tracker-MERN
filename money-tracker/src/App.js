@@ -26,12 +26,12 @@ function App() {
   }
 
   async function deleteTransaction(id) {
-    console.log("delete asked react");
+    // console.log("delete asked react");
     const url = process.env.REACT_APP_API_URL + `/transactions/${id}`;
     const res = await fetch(url, {
       method: "DELETE"
     });
-    console.log("fetch asked react");
+    // console.log("fetch asked react");
     return await res.json();
   }
 
@@ -46,7 +46,7 @@ function App() {
 
   const revealFix = () => {
     setFixit(!fixit);
-    (fixSt === 'Fix') ? setFixSt("Fixed") : setFixSt("Fix");
+    fixSt === "Fix" ? setFixSt("Fixed") : setFixSt("Fix");
   };
 
   function addNewTransaction(e) {
@@ -68,7 +68,7 @@ function App() {
         setDatetime("");
         setDescription("");
         setPrice("");
-        console.log("result", json);
+        // console.log("result", json);
       });
     });
     // getTransactions().then(transactions => {
@@ -84,10 +84,10 @@ function App() {
 
   function formatNumber(balance) {
     if (balance >= 1000000000) {
-      return (balance / 1000000000).toFixed(2).replace(/\.0$/, '') + 'b';
+      return (balance / 1000000000).toFixed(2).replace(/\.0$/, "") + "b";
     }
     if (balance >= 1000000) {
-      return (balance / 1000000).toFixed(2).replace(/\.0$/, '') + 'm';
+      return (balance / 1000000).toFixed(2).replace(/\.0$/, "") + "m";
     }
     return balance;
   }
@@ -96,9 +96,11 @@ function App() {
 
   return (
     <main>
-      <div className="full">
-        <div className="fixed">
-          <button className="fix-btn" onClick={revealFix}>{fixSt}</button>
+      <div className="fixed">
+        <div className="full">
+          <button className="fix-btn" onClick={revealFix}>
+            {fixSt}
+          </button>
           <h1>
             ₹{formatNumber(balance)}
           </h1>
@@ -171,12 +173,13 @@ function App() {
                   </span>
                 </div>
               </div>
-              {fixit && <button
-                className="dlt-entry"
-                onClick={() => handleDelete(transaction._id)}
-              >
-                x
-              </button>}
+              {fixit &&
+                <button
+                  className="dlt-entry"
+                  onClick={() => handleDelete(transaction._id)}
+                >
+                  x
+                </button>}
             </div>
           )}
       </div>
