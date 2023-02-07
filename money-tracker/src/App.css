@@ -133,6 +133,9 @@ input[type=number] {
   background-color: #17181F;
 }
 .fix-btn{
+  position: absolute;
+  top:10px;
+  right:10px;
   border-radius:4px;
   border: 2px solid greenyellow;
   color:white;

@@ -8,6 +8,7 @@ function App() {
   const [description, setDescription] = useState("");
   const [transactions, setTransactions] = useState([]);
   const [fixit, setFixit] = useState(false);
+  const [fixSt, setFixSt] = useState("Fix");
 
   useEffect(
     () => {
@@ -45,6 +46,7 @@ function App() {
 
   const revealFix = () => {
     setFixit(!fixit);
+    (fixSt === 'Fix') ? setFixSt("Fixed") : setFixSt("Fix");
   };
 
   function addNewTransaction(e) {
@@ -80,13 +82,25 @@ function App() {
   }
   balance = balance.toFixed(2);
 
+  function formatNumber(balance) {
+    if (balance >= 1000000000) {
+      return (balance / 1000000000).toFixed(2).replace(/\.0$/, '') + 'b';
+    }
+    if (balance >= 1000000) {
+      return (balance / 1000000).toFixed(2).replace(/\.0$/, '') + 'm';
+    }
+    return balance;
+  }
+
+  // formatNumber(balance);
+
   return (
     <main>
       <div className="full">
         <div className="fixed">
-          <button className="fix-btn" onClick={revealFix}>Fix</button>
+          <button className="fix-btn" onClick={revealFix}>{fixSt}</button>
           <h1>
-            ₹{balance}
+            ₹{formatNumber(balance)}
           </h1>
           <form onSubmit={addNewTransaction}>
             <div className="basic">
