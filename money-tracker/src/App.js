@@ -7,6 +7,7 @@ function App() {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [transactions, setTransactions] = useState([]);
+  const [fixit, setFixit] = useState(false);
 
   useEffect(
     () => {
@@ -22,6 +23,29 @@ function App() {
     const res = await fetch(url); // get is default for fetch
     return await res.json();
   }
+
+  async function deleteTransaction(id) {
+    console.log("delete asked react");
+    const url = process.env.REACT_APP_API_URL + `/transactions/${id}`;
+    const res = await fetch(url, {
+      method: "DELETE"
+    });
+    console.log("fetch asked react");
+    return await res.json();
+  }
+
+  function handleDelete(_id) {
+    deleteTransaction(_id).then(() => {
+      // refresh the transactions list after deletion
+      getTransactions().then(transactions => {
+        setTransactions(transactions);
+      });
+    });
+  }
+
+  const revealFix = () => {
+    setFixit(!fixit);
+  };
 
   function addNewTransaction(e) {
     e.preventDefault();
@@ -45,6 +69,9 @@ function App() {
         console.log("result", json);
       });
     });
+    // getTransactions().then(transactions => {
+    //   setTransactions(transactions);
+    // });
   }
 
   let balance = 0;
@@ -55,42 +82,48 @@ function App() {
 
   return (
     <main>
-      <div className="fixed">
-        <h1>
-          ₹{balance}
-        </h1>
-        <form onSubmit={addNewTransaction}>
-          <div className="basic">
-            <input
-              type="text"
-              value={name}
-              onChange={e => setName(e.target.value)}
-              placeholder="Example: Dinner" required
-            />
-            <input
-              type="number"
-              value={price}
-              onChange={e => setPrice(e.target.value)}
-              placeholder="Example: -200"
-              required
-            />
-          </div>
-          <div className="description">
-            <input
-              type="text"
-              value={description}
-              onChange={e => setDescription(e.target.value)}
-              placeholder="Note" required
-            />
-            <input
-              type="datetime-local"
-              value={datetime}
-              onChange={e => setDatetime(e.target.value)}
-              placeholder="Date" required
-            />
-          </div>
-          <button type="submit">Add new transaction</button>
-        </form>
+      <div className="full">
+        <div className="fixed">
+          <button className="fix-btn" onClick={revealFix}>Fix</button>
+          <h1>
+            ₹{balance}
+          </h1>
+          <form onSubmit={addNewTransaction}>
+            <div className="basic">
+              <input
+                type="text"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                placeholder="Example: Dinner"
+                required
+              />
+              <input
+                type="number"
+                value={price}
+                onChange={e => setPrice(e.target.value)}
+                placeholder="Example: -200"
+                required
+              />
+            </div>
+            <div className="description">
+              <input
+                type="text"
+                value={description}
+                onChange={e => setDescription(e.target.value)}
+                placeholder="Note"
+                required
+              />
+              <input
+                type="datetime-local"
+                value={datetime}
+                onChange={e => setDatetime(e.target.value)}
+                placeholder="Date"
+                required
+              />
+            </div>
+            <button type="submit">Add new transaction</button>
+          </form>
+        </div>
       </div>
       <div className="transactions">
         {transactions.length > 0 &&
@@ -124,6 +157,12 @@ function App() {
                   </span>
                 </div>
               </div>
+              {fixit && <button
+                className="dlt-entry"
+                onClick={() => handleDelete(transaction._id)}
+              >
+                x
+              </button>}
             </div>
           )}
       </div>

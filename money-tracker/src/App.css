@@ -13,10 +13,15 @@ body{
 
 
 main{
-  max-width: 400px;
+  max-width: 600px;
   margin: 13px auto;
   padding: 0px 10px;
 
+}
+@media screen and (max-width: 480px) {
+  main{
+    max-width: 400px;
+  }
 }
 
 h1{
@@ -67,6 +72,7 @@ form button{
 
 div.transactions{
   margin-top: 10px;
+  
 }
 div.transaction{
   display:flex;
@@ -116,11 +122,49 @@ input[type=number] {
   font-size:.7rem;
 }
 .fixed{
+  
+}
+.full{
+  width: 100%;
   z-index: 999;
   position: sticky;
   top: 0;
   margin-top:-15px;
   background-color: #17181F;
+}
+.fix-btn{
+  border-radius:4px;
+  border: 2px solid greenyellow;
+  color:white;
+  background-color: transparent;
+}
+.fix-btn:focus{
+  cursor: pointer;
+  border-radius:4px;
+  border: 2px solid greenyellow;
+  color:black;
+  background-color: greenyellow;;
+}
+.dlt-entry{
+  opacity: 0.5;
+  border-radius:5px;
+  padding:3px 0 -1px 5px;
+  position: absolute;
+  margin-left:-6px;
+  cursor:pointer;
+  background-color: #3e2828;
+  color:transparent;
+  border:none;
+}
+@media screen and (max-width: 350px) {
+  .dlt-entry{
+    width: 60%;
+  }
+}
+@media screen and (min-width: 350px) {
+  .dlt-entry{
+    width: 40%;
+  }
 }
 
 ::-webkit-scrollbar {
