@@ -164,11 +164,17 @@ input[type=number] {
 .dlt-entry:hover{
   color:red;
 }
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 380px) {
   .dlt-entry{
     width: 60%;
   }
 }
+@media screen and (min-width: 380px) {
+  .dlt-entry{
+    width: 15%;
+  }
+}
+
 @media screen and (min-width: 350px) {
   .dlt-entry{
     width: 40%;
