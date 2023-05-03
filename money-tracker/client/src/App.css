@@ -171,15 +171,15 @@ input[type=number] {
 }
 @media screen and (min-width: 380px) {
   .dlt-entry{
-    width: 15%;
+    width: 25%;
   }
 }
-
+/* 
 @media screen and (min-width: 350px) {
   .dlt-entry{
-    width: 40%;
+    width: 30%;
   }
-}
+} */
 
 ::-webkit-scrollbar {
   width: 8px;

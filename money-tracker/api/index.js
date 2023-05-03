@@ -9,12 +9,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/api/test', (req, res)=>{
-    res.json('ok');
-})
-
 app.post('/api/transaction', async (req, res)=>{
-    // console.log(`post request ${req.body}`);
+    console.log(`post request ${req.body}`);
     await mongoose.connect(process.env.MONGO_URI);
     const { name, description, datetime, price} = await req.body;
     const transaction = await Transaction.create({name, price, description, datetime})
@@ -46,5 +42,5 @@ app.delete('/api/transactions/:id', async (req, res)=>{
         res.status(500).send(err.message);
     }
 })
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 app.listen(port, ()=>{console.log(`backend running at port localhost:${port}`)})
